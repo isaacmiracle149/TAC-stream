@@ -5,7 +5,7 @@
 import { randomUUID, createHmac, timingSafeEqual, scryptSync, randomBytes } from 'crypto';
 import type { Request, Response } from 'express';
 import { db } from './db';
-import type { RouteContext, RouteResult } from './http';
+import type { RouteContext, RouteResult, RouteDefinition } from './http';
 import { error } from './http';
 
 const SESSION_SECRET = process.env.SESSION_SECRET || 'dev-only-insecure-secret-change-me';
@@ -81,7 +81,7 @@ export function requireAuth() {
     };
 }
 
-export const authRoutes = {
+export const authRoutes: Record<string, RouteDefinition> = {
     'POST /api/auth/signup': [
         async ({ body, req }: RouteContext) => {
             const input = (body || {}) as { email?: string; password?: string; name?: string };
