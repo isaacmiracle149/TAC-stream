@@ -1,6 +1,7 @@
 import { db } from "./db";
 import { ws } from "./realtime-ws";
 import { json, error } from "./http";
+import type { RouteDefinition } from "./http";
 
 const SUBSCRIPTIONS_TABLE = "entity_subscriptions";
 
@@ -89,7 +90,7 @@ export async function notifySubscribers(
     });
 }
 
-export const realtimeSubscriptionRoutes = {
+export const realtimeSubscriptionRoutes: Record<string, RouteDefinition> = {
     "POST /api/subscriptions": [
         async ({ body }) => {
             const { entity_type, entity_id, connection_id } = (body || {}) as Record<
