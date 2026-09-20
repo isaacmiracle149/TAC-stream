@@ -1,15 +1,20 @@
 {
     "compilerOptions": {
-        "target": "ES2022",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "outDir": "../backend-dist",
-        "rootDir": ".",
-        "esModuleInterop": true,
-        "strict": true,
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
         "skipLibCheck": true,
-        "resolveJsonModule": true,
-        "sourceMap": false
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
     },
-    "include": ["**/*.ts"]
+    "include": ["src"]
 }
